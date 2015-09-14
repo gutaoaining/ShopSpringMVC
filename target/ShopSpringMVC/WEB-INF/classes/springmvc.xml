@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+
+	<!-- 
+		spring可以自动去扫描base-package下面或者子包下面的java文件，
+		如果扫描到有@Component @Controller @Service @Repository等这些注解的类，则把这些类注册为bean 
+		
+	-->
+   <context:component-scan base-package="gt*" />
+   
+    <!-- 
+    	模型解析，在请求时为模型视图名称添加前后缀 
+    	比如在controller类中需要请求/WEB-INF/pages/index.jsp文件，直接写index就可以了
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/pages/" p:suffix=".jsp" />
+    
+    <!-- 这里是为了返回数据自动转换为json格式数据 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+     <property name="messageConverters">  
+       <list>  
+        <bean  
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />  
+       </list>  
+     </property>  
+    </bean> 
+    <!-- 引入的数据的转换类，实力化bean -->
+</beans>
