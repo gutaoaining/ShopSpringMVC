@@ -1,4 +1,4 @@
-package gt.controller.apply;
+package com.gt.controller.apply;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

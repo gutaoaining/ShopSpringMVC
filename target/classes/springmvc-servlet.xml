@@ -6,7 +6,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 
-
 	<!-- 
 		spring可以自动去扫描base-package下面或者子包下面的java文件，
 		如果扫描到有@Component @Controller @Service @Repository等这些注解的类，则把这些类注册为bean 
