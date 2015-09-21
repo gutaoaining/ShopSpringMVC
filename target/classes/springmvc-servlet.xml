@@ -11,7 +11,7 @@
 		如果扫描到有@Component @Controller @Service @Repository等这些注解的类，则把这些类注册为bean 
 		
 	-->
-   <context:component-scan base-package="gt.*" />
+   <context:component-scan base-package="com.gt.*" />
    
     <!-- 
     	模型解析，在请求时为模型视图名称添加前后缀 

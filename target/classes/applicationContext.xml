@@ -70,6 +70,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
 
 	<!-- 拦截器方式配置事物 -->
+	
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="add*" propagation="REQUIRED" />
