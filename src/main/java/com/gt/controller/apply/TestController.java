@@ -14,11 +14,11 @@ public class TestController {
     	 return "index";
      }
 	 @RequestMapping(value = "show")
-	    public ModelAndView add(String username){
-		     ModelAndView user = new ModelAndView("index");
-		     user.addObject("name",username);
-		     user.addObject("id","1212");
-			 System.out.println("--------test---------");
-	    	 return user;
-	     }
+     public ModelAndView add(String username){
+	     ModelAndView user = new ModelAndView("index");
+	     user.addObject("name",username);
+	     user.addObject("id","1212");
+		 System.out.println("--------test---------");
+    	 return user;
+	}
 }

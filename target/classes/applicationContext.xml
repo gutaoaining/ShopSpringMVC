@@ -97,6 +97,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 	
 	<aop:config>
 		<aop:pointcut id="transactionPointcut" expression="execution(* com.gt.services..*Impl.*(..))" />
+		                                                               
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
 	</aop:config>
 
