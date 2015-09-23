@@ -40,4 +40,10 @@ public class Account {
     public void setPass(String pass) {
         this.pass = pass == null ? null : pass.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", login=" + login + ", name=" + name + ", pass=" + pass + "]";
+	}
+    
 }
