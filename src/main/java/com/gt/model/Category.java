@@ -7,6 +7,8 @@ public class Category {
 
     private Boolean hot;
 
+    private Integer aid;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class Category {
 
     public void setHot(Boolean hot) {
         this.hot = hot;
+    }
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public void setAid(Integer aid) {
+        this.aid = aid;
     }
 }

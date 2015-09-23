@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gt.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.gt.model.Product" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="commend" property="commend" jdbcType="BIT" />
+    <result column="open" property="open" jdbcType="BIT" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.gt.model.ProductWithBLOBs" extends="BaseResultMap" >
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+    <result column="xremark" property="xremark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, price, pic, date, commend, open, cid
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark, xremark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gt.model.ProductWithBLOBs" >
+    insert into product (id, name, price, 
+      pic, date, commend, open, 
+      cid, remark, xremark
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{pic,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{commend,jdbcType=BIT}, #{open,jdbcType=BIT}, 
+      #{cid,jdbcType=INTEGER}, #{remark,jdbcType=LONGVARCHAR}, #{xremark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gt.model.ProductWithBLOBs" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="commend != null" >
+        commend,
+      </if>
+      <if test="open != null" >
+        open,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="xremark != null" >
+        xremark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commend != null" >
+        #{commend,jdbcType=BIT},
+      </if>
+      <if test="open != null" >
+        #{open,jdbcType=BIT},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xremark != null" >
+        #{xremark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gt.model.ProductWithBLOBs" >
+    update product
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commend != null" >
+        commend = #{commend,jdbcType=BIT},
+      </if>
+      <if test="open != null" >
+        open = #{open,jdbcType=BIT},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xremark != null" >
+        xremark = #{xremark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gt.model.ProductWithBLOBs" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      pic = #{pic,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      commend = #{commend,jdbcType=BIT},
+      open = #{open,jdbcType=BIT},
+      cid = #{cid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=LONGVARCHAR},
+      xremark = #{xremark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gt.model.Product" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      pic = #{pic,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      commend = #{commend,jdbcType=BIT},
+      open = #{open,jdbcType=BIT},
+      cid = #{cid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
