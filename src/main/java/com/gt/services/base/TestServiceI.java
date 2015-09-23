@@ -1,5 +1,7 @@
 package com.gt.services.base;
 
+import com.gt.model.Account;
+
 public interface TestServiceI {
-     public void test();
+     public Account test();
 }
