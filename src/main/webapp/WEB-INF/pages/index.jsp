@@ -13,5 +13,6 @@
   <input type="submit" value="提交"/>
   获取数据：${name} ${id}
 </form>
+<a href="/ShopSpringMVC/testJson.html?id=1&&name=nibei">testJson</a>
 </body>
 </html>

@@ -2,11 +2,14 @@ package com.gt.controller.apply;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gt.model.Account;
 import com.gt.services.base.TestServiceI;
+import com.sun.tools.internal.ws.processor.model.Model;
 
 
 @Controller
@@ -29,4 +32,14 @@ public class TestController {
 		 System.out.println(account);
     	 return user;
 	}
+	 @RequestMapping(value="testJson")
+	 @ResponseBody
+	 public Account test(Account account){
+		 System.out.println(account.getId());
+		 System.out.println(account.getName());
+		 account.setId(1);
+		 account.setName("倪贝");
+		 account.setLogin("nibei");
+		 return account;
+	 }
 }
