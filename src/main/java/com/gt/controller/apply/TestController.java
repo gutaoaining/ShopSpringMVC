@@ -17,14 +17,19 @@ import com.sun.tools.internal.ws.processor.model.Model;
 public class TestController {
 	@Autowired
 	 private TestServiceI testService;
+//	 @RequestMapping(value = "index")
+//     public String test(){
+//		 System.out.println();
+//    	 return "pages/index";
+//     }
 	 @RequestMapping(value = "index")
      public String test(){
 		 System.out.println();
-    	 return "index";
+    	 return "main/aindex";
      }
 	 @RequestMapping(value = "show")
      public ModelAndView add(String username){
-	     ModelAndView user = new ModelAndView("index");
+	     ModelAndView user = new ModelAndView("pages/index");
 	     user.addObject("name",username);
 	     user.addObject("id","1212");
 		 System.out.println("--------test---------");
