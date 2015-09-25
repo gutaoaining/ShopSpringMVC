@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gt.model.Account;
-import com.gt.services.base.TestServiceI;
+import com.gt.services.base.AccountServiceI;
 import com.sun.tools.internal.ws.processor.model.Model;
 
 
 @Controller
 
-public class TestController {
+public class AccountController {
 	@Autowired
-	 private TestServiceI testService;
+	 private AccountServiceI accountService;
 //	 @RequestMapping(value = "index")
 //     public String test(){
 //		 System.out.println();
@@ -33,7 +33,7 @@ public class TestController {
 	     user.addObject("name",username);
 	     user.addObject("id","1212");
 		 System.out.println("--------test---------");
-		 Account account = testService.test();
+		 Account account = accountService.test();
 		 System.out.println(account);
     	 return user;
 	}

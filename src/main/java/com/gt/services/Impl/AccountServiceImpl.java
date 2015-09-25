@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.gt.dao.AccountMapper;
 import com.gt.model.Account;
-import com.gt.services.base.TestServiceI;
+import com.gt.services.base.AccountServiceI;
 @Service
-public class TestServiceImpl implements TestServiceI {
+public class AccountServiceImpl implements AccountServiceI {
 	@Autowired
     private AccountMapper accountMapper;
 	@Override
