@@ -79,4 +79,28 @@
       aid = #{aid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <resultMap type="com.gt.model.Category" id="categoryAndAccount">
+     <id column="id" property="id" jdbcType="INTEGER" />
+     <result column="type" property="type" jdbcType="VARCHAR" />
+     <result column="hot" property="hot" jdbcType="BIT" />
+     <association property="account" javaType="com.gt.model.Account">
+	     <id property="id" column="aid"/>
+	     <result property="login" column="login"/>
+	     <result property="name" column="name"/>
+	     <result property="pass" column="pass"/>
+     </association>
+  </resultMap>
+  <select id="findAllCategoryAccount" parameterType="hashmap" resultMap="categoryAndAccount">
+        SELECT
+		category.id as id,
+		category.type as type,
+		category.hot as hot,
+		account.id as aid,
+		account.login as login,
+		account.name as name,
+		account.pass as pass 
+		FROM
+		account
+	    JOIN category ON category.aid = account.id and type like #{type} limit #{page},#{size}
+  </select>
 </mapper>
