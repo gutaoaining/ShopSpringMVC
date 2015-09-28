@@ -1,5 +1,8 @@
 package com.gt.services.Impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,16 @@ public class CategoryServiceImpl implements CategoryServiceI {
 	public Category test() {
 		// TODO Auto-generated method stub
         return categoryMapper.selectByPrimaryKey(1);
+	}
+	@Override
+	public List<Category> queryCategoryAll(Map<String, Object> map) {
+        List<Category> list = categoryMapper.findAllCategoryAccount(map);
+		return list;
+	}
+	@Override
+	public int countTypeAll(String type) {
+		int count = categoryMapper.countTypeAll(type);
+		return count;
 	}
 
 }

@@ -79,10 +79,7 @@
       aid = #{aid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap type="com.gt.model.Category" id="categoryAndAccount">
-     <id column="id" property="id" jdbcType="INTEGER" />
-     <result column="type" property="type" jdbcType="VARCHAR" />
-     <result column="hot" property="hot" jdbcType="BIT" />
+  <resultMap type="com.gt.model.Category" id="categoryAndAccount" extends="BaseResultMap">
      <association property="account" javaType="com.gt.model.Account">
 	     <id property="id" column="aid"/>
 	     <result property="login" column="login"/>
@@ -102,5 +99,8 @@
 		FROM
 		account
 	    JOIN category ON category.aid = account.id and type like #{type} limit #{page},#{size}
+  </select>
+  <select id="countTypeAll" parameterType="java.lang.String" resultType="int">
+        select count(*) from category where type like #{type}
   </select>
 </mapper>

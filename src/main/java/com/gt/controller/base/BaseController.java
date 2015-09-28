@@ -1,6 +1,7 @@
 package com.gt.controller.base;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 @Controller
 public class BaseController {
+	protected Map<String, Object> map =null;
     public void writeJson(Object obj , HttpServletResponse response){
     	String json = JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss");
     	try {

@@ -20,4 +20,6 @@ public interface CategoryMapper {
     int updateByPrimaryKey(Category record);
     
     List<Category> findAllCategoryAccount(Map<String, Object> map);
+    
+    int countTypeAll(String type);
 }

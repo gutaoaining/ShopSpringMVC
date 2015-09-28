@@ -25,13 +25,15 @@ public class TestSql {
   @Test
   public void testALlAccount(){
 	  Map<String, Object> map = new HashMap<String, Object>();
-	  
+	  int count = categoryMapper.countTypeAll("%"+"男"+"%");
 	  map.put("type", "%"+"男"+"%");
 	  map.put("page", 0);
 	  map.put("size", 4);
 	  List<Category> list = categoryMapper.findAllCategoryAccount(map);
+	  System.out.println("count:"+count);
      for (Category category : list) {
 		System.out.println(category);
+		
 	}
   }
 }
