@@ -29,10 +29,29 @@
     				handler: function(){
                         var rows = $("#categoryGrid").datagrid('getSelections');
                         if(rows.length>0){
+                            var ids = [];
                         	$.messager.confirm('确认','您确认想要删除记录吗？',function(del){    
-                        	    if (del){    
-                        	        alert('确认删除');    
-                        	    }    
+                        	     
+                        	    	 if (del){    
+                              	       for(var i =0 ; i<rows.length ; i++){
+                                            ids.push(rows[i].id);
+                                         }          
+                                         console.info(ids);
+                                         $.ajax({
+                                            url : 'categoryDel.html',
+                                            type : 'POST',
+                                            data : {idkey : ids},
+                                            success : function(data){
+                                                 if(data){
+                                                     alert("成功"+data);
+                                                 }
+                                            },
+                                            error : function(){
+
+                                            }
+                                         });
+                              	    }    
+                        	        
                         	}); 
                         }else{
                         	$.messager.alert({

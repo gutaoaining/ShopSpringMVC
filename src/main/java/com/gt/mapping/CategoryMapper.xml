@@ -103,4 +103,19 @@
   <select id="countTypeAll" parameterType="java.lang.String" resultType="int">
         select count(*) from category where type like #{type}
   </select>
+  <!-- 
+      category: 表名
+	  id: 字段名
+	  collection里表示类型，这里是array，还可以是list
+	  ids不用管，相当于一个变量
+  -->
+  <delete id="delCategory" parameterType="list">
+	delete from category where id in 
+	<foreach item="ids" collection="array" open="(" separator="," close=")"> 
+	#{ids}
+</foreach> 
+</delete>
+
+
+  
 </mapper>

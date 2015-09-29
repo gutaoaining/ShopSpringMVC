@@ -11,4 +11,6 @@ public interface CategoryServiceI {
 	public List<Category> queryCategoryAll(Map<String, Object> map);
 
 	public int countTypeAll(String type);
+
+	public void deleteCategory(Integer[] idkey);
 }

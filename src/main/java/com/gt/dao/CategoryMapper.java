@@ -1,6 +1,5 @@
 package com.gt.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,4 +21,8 @@ public interface CategoryMapper {
     List<Category> findAllCategoryAccount(Map<String, Object> map);
     
     int countTypeAll(String type);
+
+	int delCategory(Integer[] idkey);
+
+
 }

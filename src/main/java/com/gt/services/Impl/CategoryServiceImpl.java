@@ -31,5 +31,11 @@ public class CategoryServiceImpl implements CategoryServiceI {
 		int count = categoryMapper.countTypeAll(type);
 		return count;
 	}
+	@Override
+	public void deleteCategory(Integer[] idkey) {
+		 System.out.println(idkey); 
+		 categoryMapper.delCategory(idkey);
+		
+	}
 
 }
