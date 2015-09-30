@@ -29,21 +29,24 @@
     				handler: function(){
                         var rows = $("#categoryGrid").datagrid('getSelections');
                         if(rows.length>0){
-                            var ids = [];
+                            var idrows = [];
                         	$.messager.confirm('确认','您确认想要删除记录吗？',function(del){    
-                        	     
+                        	 
                         	    	 if (del){    
                               	       for(var i =0 ; i<rows.length ; i++){
-                                            ids.push(rows[i].id);
-                                         }          
-                                         console.info(ids);
+                              	    	 idrows.push(rows[i].id);
+                                         }    
+                                         var testids = $.param({"idkey":idrows},true); 
+                                         console.info(testids);      
                                          $.ajax({
                                             url : 'categoryDel.html',
                                             type : 'POST',
-                                            data : {idkey : ids},
+                                            data : testids,
                                             success : function(data){
+                                            	 console.info(data);
                                                  if(data){
-                                                     alert("成功"+data);
+                                                  $('#categoryGrid').datagrid('clearSelections');
+                                               	  $('#categoryGrid').datagrid('reload'); 
                                                  }
                                             },
                                             error : function(){

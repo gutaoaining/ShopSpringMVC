@@ -47,7 +47,7 @@ public class CategoryController extends BaseController{
      }
 	 @RequestMapping(value = "categoryDel")
 	 @ResponseBody
-     public boolean queryCategory(@RequestParam(value = "idkey[]") Integer[] idkey){
+     public boolean queryCategory(Integer[] idkey){
     	 categoryService.deleteCategory(idkey);
 		 return true;
      }
