@@ -51,5 +51,12 @@ public class CategoryController extends BaseController{
     	 categoryService.deleteCategory(idkey);
 		 return true;
      }
+	 @RequestMapping(value = "categoryDel1")
+	 @ResponseBody
+     public boolean queryCategory1(Page page){
+		 System.out.println("page test");
+    	 categoryService.deleteCategory(page.getIdkey());
+		 return true;
+     }
 
 }

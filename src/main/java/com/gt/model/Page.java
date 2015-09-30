@@ -4,6 +4,15 @@ public class Page {
 	private Integer page;
 	private Integer rows;
 	private String keyword;
+    private Integer[] idkey;
+    
+	public Integer[] getIdkey() {
+		return idkey;
+	}
+
+	public void setIdkey(Integer[] idkey) {
+		this.idkey = idkey;
+	}
 
 	public String getKeyword() {
 		return keyword;
