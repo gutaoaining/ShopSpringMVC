@@ -39,7 +39,7 @@
             	   $('#tt').tabs('add',{       		
             			title : text,
             			closable:true,
-            			content : '<iframe src="'+href+'" frameborder="0" width="100%" height="100%"/>'
+            			content : '<iframe title="'+text+'" src="'+href+'" frameborder="0" width="100%" height="100%"/>'
             		});	                   
                }
             });

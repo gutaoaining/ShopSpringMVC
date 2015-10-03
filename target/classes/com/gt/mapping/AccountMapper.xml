@@ -79,4 +79,11 @@
       pass = #{pass,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+   <resultMap id="AccountType" type="com.gt.model.Account" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="login" property="login" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="findComboType" resultMap="AccountType">
+     SELECT account.id as id,account.login as login FROM account
+  </select>
 </mapper>

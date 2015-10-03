@@ -21,29 +21,18 @@ import com.gt.services.base.CategoryServiceI;
 
 
 @Controller
-
 public class CategoryController extends BaseController{
 	@Autowired
 	 private CategoryServiceI categoryService;
-//	 @RequestMapping(value = "categoryQueryAll")
-//	 @ResponseBody
-//     public Map<String, Object> queryCategory(Page page){
-//		 int total = categoryService.countTypeAll("%"+page.getKeyword()+"%");
-//	     map = new HashMap<String,Object>();
-//	     Map<String , Object> mapquery = new HashMap<String,Object>();
-//	     mapquery.put("type", "%"+page.getKeyword()+"%");
-//	     mapquery.put("page", (page.getPage()-1)*page.getRows());
-//	     mapquery.put("size", page.getRows());
-//	     List<Category> list = categoryService.queryCategoryAll(mapquery);
-//	     map.put("total", total);
-//	     map.put("rows", list);
-//    	 return map;
-//     }
 	 @RequestMapping(value = "categoryQueryAll")
      public void queryCategory(Page page,HttpServletResponse response){
 		 int total = categoryService.countTypeAll("%"+page.getKeyword()+"%");
+		 System.out.println(total);
 		 map = new HashMap<String,Object>();
 	     List<Category> list = categoryService.queryCategoryAll(page(page));
+	     for (Category category : list) {
+			System.out.println(category);
+		}
 	     map.put("total", total);
 	     map.put("rows", list);
     	 writeJson(map, response);
@@ -54,13 +43,27 @@ public class CategoryController extends BaseController{
     	 categoryService.deleteCategory(page.getIdkey());
 		 return true;
      }
+	 @RequestMapping(value = "categorySave")
+	 @ResponseBody
+     public boolean saveCategory(Category category){
+    	 categoryService.saveCategory(category);
+		 return true;
+     }
+	 @RequestMapping(value = "categoryUpdate")
+	 @ResponseBody
+     public boolean updateCategory(Category category){
+		 System.out.println(category.getType());
+		 System.out.println(category.getHot());
+    	 categoryService.updateCategory(category);
+		 return true;
+     }
 	 public Map<String, Object> page(Page page){
-		 System.out.println("page test");
 	     Map<String , Object> mapquery = new HashMap<String,Object>();
 	     mapquery.put("type", "%"+page.getKeyword()+"%");
 	     mapquery.put("page", (page.getPage()-1)*page.getRows());
 	     mapquery.put("size", page.getRows());
 	     return mapquery;
 	 }
+	 
 
 }

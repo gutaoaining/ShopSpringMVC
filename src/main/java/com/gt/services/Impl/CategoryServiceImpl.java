@@ -17,11 +17,6 @@ public class CategoryServiceImpl implements CategoryServiceI {
 	@Autowired
     private CategoryMapper categoryMapper;
 	@Override
-	public Category test() {
-		// TODO Auto-generated method stub
-        return categoryMapper.selectByPrimaryKey(1);
-	}
-	@Override
 	public List<Category> queryCategoryAll(Map<String, Object> map) {
         List<Category> list = categoryMapper.findAllCategoryAccount(map);
 		return list;
@@ -36,6 +31,14 @@ public class CategoryServiceImpl implements CategoryServiceI {
 		 System.out.println(idkey); 
 		 categoryMapper.delCategory(idkey);
 		
+	}
+	@Override
+	public void saveCategory(Category category) {
+		categoryMapper.insertSelective(category);
+	}
+	@Override
+	public void updateCategory(Category category) {
+		categoryMapper.updateByPrimaryKeySelective(category);
 	}
 
 }

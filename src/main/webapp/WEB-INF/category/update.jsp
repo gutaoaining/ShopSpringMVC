@@ -12,7 +12,7 @@
              missingMessage : '类型不能为空！' 
          }); 
          $('#cc').combobox({    
-        	    url:'accountaction!queryAccount.action',  
+        	    url:'comboType.html',  
         	    panelHeight : 'auto',
         	    panelWidth : 120,
         	    width : 120,  
@@ -31,10 +31,9 @@
         $("#update_category_btn").on('click',function(){
             if($('#update_category_form').form('validate')){
             	$('#update_category_form').form('submit', {    
-            	    url:'',      
+            	    url:'categoryUpdate.html',      
             	    success : function(data){  
-                	    var json = eval("("+data+")");   
-            	    	if(json.msg){           	
+            	    	if(data){           	
             	    	  parent.$('#win').window('close');
             	    	  //通过穿换成dom对象从而拿到相应的节点元素，这是在浏览器不兼容是一种很有效的方法  
                       	  dg.datagrid('reload'); 

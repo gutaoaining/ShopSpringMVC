@@ -1,7 +1,10 @@
 package com.gt.services.base;
 
+import java.util.List;
+
 import com.gt.model.Account;
 
 public interface AccountServiceI {
-     public Account test();
+  
+	public List<Account> findComboType();
 }

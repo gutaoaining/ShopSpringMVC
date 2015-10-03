@@ -15,10 +15,9 @@
         	 $('#add_category_form').form('enableValidation');
             if($('#add_category_form').form('validate')){
             	$('#add_category_form').form('submit', {    
-            	    url:'',      
+            	    url:'categorySave.html',      
             	    success : function(data){  
-                	    var json = eval("("+data+")");   
-            	    	if(json.msg){
+            	    	if(data){
             	    	  parent.$('#win').window('close');
             	    	  //通过穿换成dom对象从而拿到相应的节点元素，这是在浏览器不兼容是一种很有效的方法  
                       	  parent.$('iframe[title="类别管理"]').get(0).contentWindow.$("#categoryGrid").datagrid('reload'); 

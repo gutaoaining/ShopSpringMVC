@@ -1,5 +1,7 @@
 package com.gt.controller.apply;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,43 +10,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gt.model.Account;
+import com.gt.model.Category;
 import com.gt.services.base.AccountServiceI;
 import com.sun.tools.internal.ws.processor.model.Model;
 
 
 @Controller
-
 public class AccountController {
 	@Autowired
-	 private AccountServiceI accountService;
-//	 @RequestMapping(value = "index")
-//     public String test(){
-//		 System.out.println();
-//    	 return "pages/index";
-//     }
-	 @RequestMapping(value = "index")
-     public String test(){
-		 System.out.println();
-    	 return "main/aindex";
-     }
-	 @RequestMapping(value = "show")
-     public ModelAndView add(String username){
-	     ModelAndView user = new ModelAndView("pages/index");
-	     user.addObject("name",username);
-	     user.addObject("id","1212");
-		 System.out.println("--------test---------");
-		 Account account = accountService.test();
-		 System.out.println(account);
-    	 return user;
-	}
-	 @RequestMapping(value="testJson")
-	 @ResponseBody
-	 public Account test(Account account){
-		 System.out.println(account.getId());
-		 System.out.println(account.getName());
-		 account.setId(1);
-		 account.setName("倪贝");
-		 account.setLogin("nibei");
-		 return account;
-	 }
+	private AccountServiceI accountService;
+	@RequestMapping(value = "comboType")
+	@ResponseBody
+    public List<Account> accountType(){
+		System.out.println("test Account");
+		 List<Account> list = accountService.findComboType();
+		 for (Account account : list) {
+			System.out.println(account);
+		}
+	     return list;
+    }
+	 
 }

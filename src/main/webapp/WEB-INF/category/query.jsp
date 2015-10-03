@@ -19,7 +19,7 @@
         			text : "修改类别",
     				iconCls: 'icon-edit',
     				handler: function(){
-    					var rows = $("#categoryGrid").datagrid('getSelections');
+    				var rows = $("#categoryGrid").datagrid('getSelections');
    			         if(rows.length==1){
                              parent.$('#win').window({    
          					    width : 340,    
@@ -127,6 +127,9 @@
      			prompt:'请输入查询类别' 
         }); 
      });
+     function clearRow(){
+    	 $('#categoryGrid').datagrid('clearSelections');
+      }
    </script>
 </head>
 <body>

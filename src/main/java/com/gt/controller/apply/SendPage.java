@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SendPage {
+	
+	 @RequestMapping(value = "aindex")
+     public String index(){
+		 System.out.println();
+    	 return "main/aindex";
+     }
 	 @RequestMapping(value = "categorySendPage")
      public String sendPage(){
     	 return "category/query";
