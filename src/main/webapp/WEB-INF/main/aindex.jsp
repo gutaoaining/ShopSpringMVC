@@ -53,7 +53,7 @@
     <div id="menu" class="easyui-accordion" data-options="fit:true">   
 	    <div title="基本操作" data-options="iconCls:'icon-save'">   
 	       <ul>
-	          <li><a href="#" title="categoryquery.html">类别管理</a></li>
+	          <li><a href="#" title="categorySendPage.html">类别管理</a></li>
 	          <li><a href="#">商品管理</a></li>
 	       </ul>
 	    </div>   
@@ -80,5 +80,7 @@
 		    </div>  
 		    
     </div>   
+     <div id="win" data-options="collapsible:false,minimizable:false,maximizable:false,modal:true">     
+    </div>  
 </body>  
 </html>

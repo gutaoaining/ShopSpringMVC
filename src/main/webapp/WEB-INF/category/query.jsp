@@ -18,11 +18,41 @@
     			toolbar: [{
         			text : "修改类别",
     				iconCls: 'icon-edit',
-    				handler: function(){alert('编辑按钮')}
+    				handler: function(){
+    					var rows = $("#categoryGrid").datagrid('getSelections');
+   			         if(rows.length==1){
+                             parent.$('#win').window({    
+         					    width : 340,    
+         					    height : 250,
+         					    title : '修改类别', 
+         					    content : '<iframe  src="categoryUpdatePage.html" frameborder="0" width="100%" height="100%"/>',
+         					    onClose : function(){
+         					    	clearRow();
+             					}
+         					});  
+   			         }else{
+   			        	 $.messager.alert({
+                        		title : '错误提示',
+                        		msg : '只能编辑一条数据！',
+                        		icon : 'error'
+                           });
+       			     }
+        		    }
     			},'-',{
         			text : '添加类别',
     				iconCls: 'icon-add',
-    				handler: function(){alert('添加按钮')}
+    				handler: function(){
+    					parent.$('#win').window({    
+    					    width : 340,    
+    					    height : 180,
+    					    title : '添加类别', 
+    					    content : '<iframe  src="categoryAddPage.html" frameborder="0" width="100%" height="100%"/>',
+    					    onClose : function(){
+    					    	clearRow();
+        				    }
+                      
+    	    		});  
+        			}
     			},'-',{
         			text : '删除类别',
     				iconCls: 'icon-remove',
@@ -49,9 +79,6 @@
                                                	  $('#categoryGrid').datagrid('reload'); 
                                                  }
                                             },
-                                            error : function(){
-
-                                            }
                                          });
                               	    }    
                         	        
@@ -104,6 +131,5 @@
 </head>
 <body>
 <table id="categoryGrid"></table>
-
 </body>
 </html>
