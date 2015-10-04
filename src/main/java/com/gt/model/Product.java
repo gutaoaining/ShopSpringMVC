@@ -4,7 +4,18 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
-    private Integer id;
+	
+	private Category category;
+	
+    public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	private Integer id;
 
     private String name;
 
@@ -19,6 +30,10 @@ public class Product {
     private Boolean open;
 
     private Integer cid;
+    
+    private String remark;
+
+    private String xremark;
 
     public Integer getId() {
         return id;
@@ -83,4 +98,21 @@ public class Product {
     public void setCid(Integer cid) {
         this.cid = cid;
     }
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getXremark() {
+		return xremark;
+	}
+
+	public void setXremark(String xremark) {
+		this.xremark = xremark;
+	}
+    
 }

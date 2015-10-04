@@ -12,7 +12,13 @@
 		
 	-->
    <context:component-scan base-package="com.gt.*" />
-   
+   <bean id="property" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+      <property name="locations">
+        <array>
+          <value>classpath:public.properties</value>
+        </array>
+      </property>
+    </bean>
     <!-- 
     	模型解析，在请求时为模型视图名称添加前后缀 
     	比如在controller类中需要请求/WEB-INF/pages/index.jsp文件，直接写index就可以了

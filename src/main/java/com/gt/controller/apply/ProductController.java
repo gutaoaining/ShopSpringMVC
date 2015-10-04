@@ -14,51 +14,51 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gt.controller.base.BaseController;
-import com.gt.model.Category;
+import com.gt.model.Product;
 import com.gt.model.Page;
 import com.gt.services.base.CategoryServiceI;
 
 
 
 @Controller
-public class CategoryController extends BaseController{
+public class ProductController extends BaseController{
 
-	 @RequestMapping(value = "categoryQueryAll")
-     public void queryCategory(Page page,HttpServletResponse response){
-		 int total = categoryService.countTypeAll("%"+page.getKeyword()+"%");
+	 @RequestMapping(value = "productQueryAll")
+     public void queryProduct(Page page,HttpServletResponse response){
+		 int total = productService.countProductAll("%"+page.getKeyword()+"%");
 		 System.out.println(total);
 		 map = new HashMap<String,Object>();
-	     List<Category> list = categoryService.queryCategoryAll(page(page));
-	     for (Category category : list) {
-			System.out.println(category);
+	     List<Product> list = productService.queryProductAll(page(page));
+	     for (Product Product : list) {
+			System.out.println(Product);
 		}
 	     map.put("total", total);
 	     map.put("rows", list);
     	 writeJson(map, response);
      }
-	 @RequestMapping(value = "categoryDel")
+	 @RequestMapping(value = "productDel")
 	 @ResponseBody
-     public boolean delCategory1(Page page){
-    	 categoryService.deleteCategory(page.getIdkey());
+     public boolean delProduct(Page page){
+    	 productService.deleteProduct(page.getIdkey());
 		 return true;
      }
-	 @RequestMapping(value = "categorySave")
+	 @RequestMapping(value = "productSave")
 	 @ResponseBody
-     public boolean saveCategory(Category category){
-    	 categoryService.saveCategory(category);
+     public boolean saveProduct(Product product){
+    	 productService.saveProduct(product);
 		 return true;
      }
-	 @RequestMapping(value = "categoryUpdate")
+	 @RequestMapping(value = "productUpdate")
 	 @ResponseBody
-     public boolean updateCategory(Category category){
-		 System.out.println(category.getType());
-		 System.out.println(category.getHot());
-    	 categoryService.updateCategory(category);
+     public boolean updateProduct(Product product){
+		 System.out.println(product.getName());
+		 System.out.println(product.getId());
+    	 productService.updateProduct(product);
 		 return true;
      }
 	 public Map<String, Object> page(Page page){
 	     Map<String , Object> mapquery = new HashMap<String,Object>();
-	     mapquery.put("type", "%"+page.getKeyword()+"%");
+	     mapquery.put("name", "%"+page.getKeyword()+"%");
 	     mapquery.put("page", (page.getPage()-1)*page.getRows());
 	     mapquery.put("size", page.getRows());
 	     return mapquery;

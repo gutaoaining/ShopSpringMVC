@@ -7,16 +7,16 @@
    <script type="text/javascript">
      $(function(){
     	 $('#categoryGrid').datagrid({    
-    		    url:'categoryaction!query.action',  
+    		    url:'productQueryAll.html',  
     		    striped : true,
     		    pagination : true,
     		    fitColumns:true,
     		    idField : 'id',
     		    queryParams: {
-    				type: '',
+    		    	keyword: '',
     			},
     			toolbar: [{
-        			text : "修改类别",
+        			text : "修改商品",
     				iconCls: 'icon-edit',
     				handler: function(){
     					var rows = $("#categoryGrid").datagrid('getSelections');
@@ -24,8 +24,8 @@
                               parent.$('#win').window({    
           					    width : 340,    
           					    height : 250,
-          					    title : '修改类别', 
-          					    content : '<iframe  src="send_category_update.action" frameborder="0" width="100%" height="100%"/>'
+          					    title : '修改商品信息', 
+          					    content : '<iframe  src="" frameborder="0" width="100%" height="100%"/>'
           					});  
     			         }else{
     			        	 $.messager.alert({
@@ -37,18 +37,18 @@
 
         			}
     			},'-',{
-        			text : '添加类别',
+        			text : '添加商品',
     				iconCls: 'icon-add',
     				handler: function(){
     					parent.$('#win').window({    
-    					    width : 340,    
-    					    height : 180,
-    					    title : '添加类别', 
-    					    content : '<iframe  src="send_category_save.action" frameborder="0" width="100%" height="100%"/>'
+    					    width : 500,    
+    					    height : 600,
+    					    title : '添加商品', 
+    					    content : '<iframe  src="ProductSavePage.html" frameborder="0" width="100%" height="100%"/>'
     					});  
         		   }
     			},'-',{
-        			text : '删除类别',
+        			text : '删除商品',
     				iconCls: 'icon-remove',
     				handler: function(){
                         var rows = $("#categoryGrid").datagrid('getSelections');
@@ -61,13 +61,9 @@
                                           }  
                                	         console.info(idkey);
                                	         var params = $.param({'idArray':idkey},true);
-                               	         console.info("params:"+params);
                                          var key = idkey.join(',');
-                                         console.info("字符串："+key);
-                                          var url = "categoryaction!deleteCategoryArray.action";
-                                          var url1 = "categoryaction!deleteCategory.action";//字符串传递
                                           $.ajax({
-                                             url : url1,
+                                             url : '',
                                              type : 'POST',
                                              async : true,
                                              data : {ids : key},
@@ -87,7 +83,7 @@
                         }else{
                         	$.messager.alert({
                         		title : '错误提示',
-                        		msg : '请选择要删除的行！',
+                        		msg : '请选择要删除的商品！',
                         		icon : 'error'
                            });
                         }
@@ -99,33 +95,25 @@
     		    pageList : [5,10,15,20,25],
     		    columns:[[ 
 					{field:'checkbox',checkbox:true},       
-    		        {field:'id',title:'ID号',width:100},    
-    		        {field:'type',title:'商品类别',width:100},    
-    		        {field:'hot',title:'热点',width:100,
+    		        {field:'id',title:'商品编号',width:100},    
+    		        {field:'name',title:'商品名称',width:100},    
+    		        {field:'remark',title:'简单介绍',width:100},
+    		        {field:'category.type',title:'所属类别',width:100,
     		        	formatter: function(value,row,index){
-							if(value){
-								return '<input type="checkbox" checked="checked" disabled="disabled">';
- 						    }else{
- 						    	return '<input type="checkbox" disabled="true">';
- 	 						}
-        		        }
-            		},
-    		        {field:'account.login',title:'管理名',width:100,
-    		        	formatter: function(value,row,index){
-        		         if(row.account!=null&&row.account.login!=null)
-    				       return row.account.login;		
+        		         if(row.category!=null&&row.category.type!=null){
+    				      	 return row.category.type;
     					 }
-        		    }
-    	 
+        		      }
+    		        }
     		    ]]    
     	});   
      	$('#searchType').searchbox({ 
      		searcher:function(value,name){ 
      			   $("#categoryGrid").datagrid('load',{
-                         type : value
+     				  keyword : value
          		   });
      			}, 
-     			prompt:'请输入查询类别' 
+     			prompt:'请输入查询商品信息' 
         }); 
      });
    </script>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gt.controller.base.BaseController;
 import com.gt.model.Account;
 import com.gt.model.Category;
 import com.gt.services.base.AccountServiceI;
@@ -16,9 +17,8 @@ import com.sun.tools.internal.ws.processor.model.Model;
 
 
 @Controller
-public class AccountController {
-	@Autowired
-	private AccountServiceI accountService;
+public class AccountController extends BaseController{
+	
 	@RequestMapping(value = "comboType")
 	@ResponseBody
     public List<Account> accountType(){

@@ -10,22 +10,16 @@
     <result column="commend" property="commend" jdbcType="BIT" />
     <result column="open" property="open" jdbcType="BIT" />
     <result column="cid" property="cid" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.gt.model.ProductWithBLOBs" extends="BaseResultMap" >
-    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+     <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
     <result column="xremark" property="xremark" jdbcType="LONGVARCHAR" />
   </resultMap>
+ 
   <sql id="Base_Column_List" >
-    id, name, price, pic, date, commend, open, cid
+    id, name, price, pic, date, commend, open, cid, remark, xremark
   </sql>
-  <sql id="Blob_Column_List" >
-    remark, xremark
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from product
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -33,7 +27,7 @@
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.gt.model.ProductWithBLOBs" >
+  <insert id="insert" parameterType="com.gt.model.Product" >
     insert into product (id, name, price, 
       pic, date, commend, open, 
       cid, remark, xremark
@@ -43,7 +37,7 @@
       #{cid,jdbcType=INTEGER}, #{remark,jdbcType=LONGVARCHAR}, #{xremark,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.gt.model.ProductWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.gt.model.Product" >
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -110,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gt.model.ProductWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.gt.model.Product" >
     update product
     <set >
       <if test="name != null" >
@@ -143,7 +137,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gt.model.ProductWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gt.model.Product" >
     update product
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
@@ -167,4 +161,35 @@
       cid = #{cid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+   <resultMap type="com.gt.model.Product" id="productAndCategory" extends="BaseResultMap">
+     <association property="category" javaType="com.gt.model.Category">
+	     <result property="type" column="type"/>
+     </association>
+  </resultMap>
+  <select id="findAllProductCategory" parameterType="hashmap" resultMap="productAndCategory">
+        SELECT
+		product.id as id,
+		product.`name` as name,
+		product.remark as remark,
+		category.type as type 
+		FROM
+		category
+		JOIN product ON product.cid = category.id and product.name like #{name} limit #{page},#{size}  
+  </select>
+  <select id="countProductAll" parameterType="java.lang.String" resultType="int">
+        select count(*) from product where name like #{name}
+  </select>
+  <!-- 
+      category: 表名
+	  id: 字段名
+	  collection里表示类型，这里是array，还可以是list
+	  ids不用管，相当于一个变量
+  -->
+  <delete id="delProduct" parameterType="list">
+	delete from product where id in 
+	<foreach item="ids" collection="array" open="(" separator="," close=")"> 
+	#{ids}
+  </foreach> 
+</delete>
 </mapper>

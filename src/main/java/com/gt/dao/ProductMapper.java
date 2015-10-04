@@ -1,20 +1,28 @@
 package com.gt.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.gt.model.Product;
-import com.gt.model.ProductWithBLOBs;
 
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(ProductWithBLOBs record);
+    int insert(Product record);
 
-    int insertSelective(ProductWithBLOBs record);
+    int insertSelective(Product record);
 
-    ProductWithBLOBs selectByPrimaryKey(Integer id);
+    Product selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(ProductWithBLOBs record);
+    int updateByPrimaryKeySelective(Product record);
 
-    int updateByPrimaryKeyWithBLOBs(ProductWithBLOBs record);
+    int updateByPrimaryKeyWithBLOBs(Product record);
 
     int updateByPrimaryKey(Product record);
+    
+    List<Product> findAllProductCategory(Map<String, Object> map);
+    
+    int countProductAll(String name);
+
+	int delProduct(Integer[] idkey);
 }

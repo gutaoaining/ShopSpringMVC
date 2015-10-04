@@ -53,8 +53,8 @@
     <div id="menu" class="easyui-accordion" data-options="fit:true">   
 	    <div title="基本操作" data-options="iconCls:'icon-save'">   
 	       <ul>
-	          <li><a href="#" title="categorySendPage.html">类别管理</a></li>
-	          <li><a href="#">商品管理</a></li>
+	          <li><a href="#" title="categoryPage.html">类别管理</a></li>
+	          <li><a href="#" title="ProductPage.html">商品管理</a></li>
 	       </ul>
 	    </div>   
 	    <div title="案列设置" data-options="iconCls:'icon-reload',selected:true">   
