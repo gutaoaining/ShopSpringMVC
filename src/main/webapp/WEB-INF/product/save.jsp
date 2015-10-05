@@ -96,7 +96,7 @@
 	</div>
 	<div>
 		<label>所属类别：</label> 
-		<select id="cc" name="category.id">
+		<select id="cc" name="cid">
 		</select>
 	</div>
 	<div>

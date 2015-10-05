@@ -1,9 +1,9 @@
 package com.gt.util;
 
-import com.gt.model.FileImage;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface UploadFile {
 
-	String uploadFile(FileImage fileImage);
+	String uploadFile(MultipartFile fileImage);
 
 }

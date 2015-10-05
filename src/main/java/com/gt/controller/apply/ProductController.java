@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gt.controller.base.BaseController;
 import com.gt.model.Product;
-import com.gt.model.FileImage;
 import com.gt.model.Page;
 import com.gt.services.base.CategoryServiceI;
 
@@ -44,11 +43,11 @@ public class ProductController extends BaseController{
      }
 	 @RequestMapping(value = "productSave")
 	 @ResponseBody
-     public boolean saveProduct(Product product){    	 
-		 System.out.println("获得商品信息："+product);
-		// String fileName = uploadfile.getOriginalFilename();  
-		 //System.out.println("获得上传文件名："+fi);
-		 //productService.saveProduct(product);
+     public boolean saveProduct(Product product,@RequestParam(value = "uploadfile", required = false) MultipartFile uploadfile){    	 
+		 
+		String pic = uploadFile.uploadFile(uploadfile);
+		product.setPic(pic);
+		productService.saveProduct(product);
 		 return true;
      }
 	 @RequestMapping(value = "productUpdate")

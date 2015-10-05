@@ -1,15 +1,13 @@
 package com.gt.util;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
-import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.gt.model.FileImage;
 
 
 @Component("uploadFile")
@@ -32,19 +30,21 @@ public class FileUploadUtil implements UploadFile {
     	 return UUID.randomUUID().toString()+"."+ext;
      }
      /* 
-	 * @see com.gt.util.UploadFile#uploadFile(com.gt.model.FileImage)
+	 * @see com.gt.util.UploadFile#uploadFile(com.gt.model.uploadfile)
 	 */
     @Override
-	public String uploadFile(FileImage fileImage){
-    	String pic = CreateNewName(fileImage.getFilename());
+	public String uploadFile(MultipartFile uploadfile){
+    	String pic = CreateNewName(uploadfile.getOriginalFilename());
     	try {
-			FileUtil.copyFile(fileImage.getUploadfile(), new File(filepath,pic));
+    		File targetFile = new File(filepath, pic);
+    		if(!targetFile.exists()){  
+                targetFile.mkdirs();  
+            }  
+    		uploadfile.transferTo(targetFile);
 			return pic;
-    	} catch (IOException e) {
+    	} catch (Exception e) {
 			throw new RuntimeException(e);
-		}finally {
-			fileImage.getUploadfile().delete();
-		}	
-    	
+		}
      }
+	
 }
