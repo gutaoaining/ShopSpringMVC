@@ -38,12 +38,12 @@ public class FileUploadUtil implements UploadFile {
 	public String uploadFile(FileImage fileImage){
     	String pic = CreateNewName(fileImage.getFilename());
     	try {
-			FileUtil.copyFile(fileImage.getFile(), new File(filepath,pic));
+			FileUtil.copyFile(fileImage.getUploadfile(), new File(filepath,pic));
 			return pic;
     	} catch (IOException e) {
 			throw new RuntimeException(e);
 		}finally {
-			fileImage.getFile().delete();
+			fileImage.getUploadfile().delete();
 		}	
     	
      }

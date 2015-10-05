@@ -18,13 +18,13 @@ import com.gt.services.base.CategoryServiceI;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:applicationContext.xml", "classpath*:spring.xml" })
 public class TestAccount {
-	  @Autowired
-	   protected AccountMapper accountMapper;
-	  @Test
-	   public void testComboType(){
-		  List<Account> list = accountMapper.findComboType();
-		  for (Account account : list) {
-			System.out.println(account);
-		}
-	   }
+//	  @Autowired
+//	   protected AccountMapper accountMapper;
+//	  @Test
+//	   public void testComboType(){
+//		  List<Account> list = accountMapper.findComboType();
+//		  for (Account account : list) {
+//			System.out.println(account);
+//		}
+//	   }
 }

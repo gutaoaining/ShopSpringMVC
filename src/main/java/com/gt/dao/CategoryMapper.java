@@ -24,5 +24,7 @@ public interface CategoryMapper {
 
 	int delCategory(Integer[] idkey);
 
+	List<Category> findProductType();
+
 
 }

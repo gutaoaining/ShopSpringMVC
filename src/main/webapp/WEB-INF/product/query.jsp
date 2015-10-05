@@ -42,7 +42,7 @@
     				handler: function(){
     					parent.$('#win').window({    
     					    width : 500,    
-    					    height : 600,
+    					    height : 300,
     					    title : '添加商品', 
     					    content : '<iframe  src="ProductSavePage.html" frameborder="0" width="100%" height="100%"/>'
     					});  
@@ -53,25 +53,25 @@
     				handler: function(){
                         var rows = $("#categoryGrid").datagrid('getSelections');
                         if(rows.length>0){
-                        	var idkey = [];
+                        	var idrows = [];
                          	$.messager.confirm('确认','您确认想要删除记录吗？',function(del){        
                          	    	 if (del){    
                                	       for(var i =0 ; i<rows.length ; i++){
-                                             idkey.push(rows[i].id);
+                               	    	    idrows.push(rows[i].id);
                                           }  
-                               	         console.info(idkey);
-                               	         var params = $.param({'idArray':idkey},true);
-                                         var key = idkey.join(',');
-                                          $.ajax({
-                                             url : '',
+                               	         
+                               	         var testids = $.param({'idkey':idrows},true);
+                               	         console.info(testids);
+                                             $.ajax({
+                                             url : 'productDel.html',
                                              type : 'POST',
                                              async : true,
-                                             data : {ids : key},
+                                             data : testids,
                                              dataType:'json',
                                              success : function(data){
                                                  //console.info(data);
                                                  //后台通过strean的方式返回
-                                                  if(data.msg){
+                                                  if(data){
                                                 	  $('#categoryGrid').datagrid('clearSelections');
                                                 	  $('#categoryGrid').datagrid('reload'); 
                                                   }

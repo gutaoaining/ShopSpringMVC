@@ -41,7 +41,7 @@
     		   validType : "format['jpg,png,jpeg,gif']"
            });
     	   $('#cc').combobox({    
-       	    url:'',  
+       	    url:'productType.html',  
        	    panelHeight : 'auto',
        	    panelWidth : 120,
        	    width : 120,  
@@ -49,7 +49,7 @@
        	    valueField:'id',    
        	    textField:'type',
        	    required: true,
-       	    missingMessage : '请选择类别'  
+       	    missingMessage : '请选择商品类别'  
            }); 
            $("textarea[name=remark]").validatebox({
         	   required: true,
@@ -63,17 +63,17 @@
     		   $('#add_product_form').form('enableValidation');
                if($('#add_product_form').form('validate')){
                	$('#add_product_form').form('submit', {    
-               	    url:'',      
+               	    url:'productSave.html',      
                	    success : function(data){  
-                   	    var json = eval("("+data+")");   
-               	    	if(json.msg){           	
+                   	 if(data){           	
                	    	 parent.$('#win').window('close');
                	    	 //通过穿换成dom对象从而拿到相应的节点元素，这是在浏览器不兼容是一种很有效的方法  
                          var dg =  parent.$('iframe[title="商品管理"]').get(0).contentWindow.$("#categoryGrid");   
                          dg.datagrid('reload'); 
                            }   
                	    }    
-               	});  
+               	}); 
+                $.ajax({}); 
                }
            });
            $("#reset").click(function(){
@@ -92,7 +92,7 @@
 		<label>商品价格:</label> <input type="text" name="price" />
 	</div>
 	<div>
-		<label>图片上传:</label> <input type="file" name="fileImage.upload" />
+		<label>图片上传:</label> <input type="file" name="uploadfile" />
 	</div>
 	<div>
 		<label>所属类别：</label> 

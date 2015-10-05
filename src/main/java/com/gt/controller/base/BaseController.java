@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.gt.services.base.AccountServiceI;
 import com.gt.services.base.CategoryServiceI;
 import com.gt.services.base.ProductServiceI;
+import com.gt.util.UploadFile;
 
 @Controller
 public class BaseController {
@@ -22,6 +23,8 @@ public class BaseController {
 	protected ProductServiceI productService;
 	@Autowired
 	protected AccountServiceI accountService;
+	@Autowired
+	protected UploadFile uploadFile;
     public void writeJson(Object obj , HttpServletResponse response){
     	String json = JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss");
     	try {

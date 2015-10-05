@@ -115,7 +115,15 @@
 	#{ids}
 </foreach> 
 </delete>
-
-
-  
+  <resultMap type="com.gt.model.Category" id="ProductType">
+  	<id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="findProductType" resultMap="ProductType">
+    SELECT
+	category.id as id,
+	category.type as type
+	FROM
+	category
+  </select>
 </mapper>

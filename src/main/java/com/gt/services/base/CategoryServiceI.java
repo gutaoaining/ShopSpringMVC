@@ -16,4 +16,6 @@ public interface CategoryServiceI {
 	public void saveCategory(Category category);
 
 	public void updateCategory(Category category);
+
+	public List<Category> findProductType();
 }

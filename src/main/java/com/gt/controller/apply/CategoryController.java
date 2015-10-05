@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gt.controller.base.BaseController;
+import com.gt.model.Account;
 import com.gt.model.Category;
 import com.gt.model.Page;
 import com.gt.services.base.CategoryServiceI;
@@ -51,8 +52,6 @@ public class CategoryController extends BaseController{
 	 @RequestMapping(value = "categoryUpdate")
 	 @ResponseBody
      public boolean updateCategory(Category category){
-		 System.out.println(category.getType());
-		 System.out.println(category.getHot());
     	 categoryService.updateCategory(category);
 		 return true;
      }
@@ -63,6 +62,11 @@ public class CategoryController extends BaseController{
 	     mapquery.put("size", page.getRows());
 	     return mapquery;
 	 }
-	 
+	 @RequestMapping(value = "productType")
+		@ResponseBody
+	    public List<Category> ProductType(){
+			 List<Category> list = categoryService.findProductType();
+		     return list;
+	    }
 
 }

@@ -22,7 +22,6 @@ public class AccountController extends BaseController{
 	@RequestMapping(value = "comboType")
 	@ResponseBody
     public List<Account> accountType(){
-		System.out.println("test Account");
 		 List<Account> list = accountService.findComboType();
 		 for (Account account : list) {
 			System.out.println(account);

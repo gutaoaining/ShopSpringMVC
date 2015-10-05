@@ -12,13 +12,13 @@ import com.gt.model.Category;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:applicationContext.xml", "classpath*:spring.xml" })
 public class TestCategory {
-	@Autowired
-	   private CategoryMapper categoryMapper;
-	  @Test
-	   public void test1(){
-		  Category category =new Category();
-		  category.setType("男士休闲");
-		  category.setHot(true);
-		  categoryMapper.insertSelective(category);
-	   }
+//	@Autowired
+//	   private CategoryMapper categoryMapper;
+//	  @Test
+//	   public void test1(){
+//		  Category category =new Category();
+//		  category.setType("男士休闲");
+//		  category.setHot(true);
+//		  categoryMapper.insertSelective(category);
+//	   }
 }

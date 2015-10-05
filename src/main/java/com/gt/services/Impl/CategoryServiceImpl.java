@@ -40,5 +40,9 @@ public class CategoryServiceImpl implements CategoryServiceI {
 	public void updateCategory(Category category) {
 		categoryMapper.updateByPrimaryKeySelective(category);
 	}
+	@Override
+	public List<Category> findProductType() {
+		return categoryMapper.findProductType();
+	}
 
 }

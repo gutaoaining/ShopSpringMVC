@@ -19,6 +19,16 @@
         </array>
       </property>
     </bean>
+    <!-- 支持文件上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+    <!-- 设置上传文件的最大尺寸为1MB -->  
+    <property name="maxUploadSize">  
+        <value>10485760</value>  
+    </property>
+    <property name="defaultEncoding"> 
+        <value>UTF-8</value> 
+    </property>
+    </bean>
     <!-- 
     	模型解析，在请求时为模型视图名称添加前后缀 
     	比如在controller类中需要请求/WEB-INF/pages/index.jsp文件，直接写index就可以了

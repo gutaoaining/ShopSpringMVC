@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
-	
+
 	private Category category;
 	
     public Category getCategory() {
@@ -113,6 +113,13 @@ public class Product {
 
 	public void setXremark(String xremark) {
 		this.xremark = xremark;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [category=" + category + ", id=" + id + ", name=" + name + ", price=" + price + ", pic=" + pic
+				+ ", date=" + date + ", commend=" + commend + ", open=" + open + ", cid=" + cid + ", remark=" + remark
+				+ ", xremark=" + xremark + "]";
 	}
     
 }
