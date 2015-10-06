@@ -42,7 +42,7 @@
     				handler: function(){
     					parent.$('#win').window({    
     					    width : 500,    
-    					    height : 300,
+    					    height : 600,
     					    title : '添加商品', 
     					    content : '<iframe  src="ProductSavePage.html" frameborder="0" width="100%" height="100%"/>'
     					});  

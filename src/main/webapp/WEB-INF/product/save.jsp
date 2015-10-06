@@ -60,12 +60,14 @@
            });
     	   $('#add_product_form').form('disableValidation');
     	   $("#add_product_btn").on('click',function(){
+    		   $("#add_product_btn").linkbutton('disable'); 
     		   $('#add_product_form').form('enableValidation');
                if($('#add_product_form').form('validate')){
                	$('#add_product_form').form('submit', {    
                	    url:'productSave.html',      
                	    success : function(data){  
-                   	 if(data){           	
+                   	 if(data){    
+                   		$('#add_product_btn').linkbutton('enable');        	
                	    	 parent.$('#win').window('close');
                	    	 //通过穿换成dom对象从而拿到相应的节点元素，这是在浏览器不兼容是一种很有效的方法  
                          var dg =  parent.$('iframe[title="商品管理"]').get(0).contentWindow.$("#categoryGrid");   
