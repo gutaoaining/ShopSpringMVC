@@ -7,7 +7,7 @@
    <context-param>
 		<!-- 指定Spring上下文配置文件 ,加载时自动加载这些配置文件-->
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:applicationContext.xml,classpath*:spring.xml</param-value>
+		<param-value>classpath*:applicationContext.xml,classpath*:spring.xml,classpath*:springmvc-servlet.xml</param-value>
 	</context-param>
 	<!-- 字符過濾 -->
 	<filter>
@@ -37,6 +37,10 @@
 	<!-- 防止spring内存溢出监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	<!-- 自己定义的页面初始化监听器 -->
+	<listener>
+		<listener-class>com.gt.listener.Initlistener</listener-class>
 	</listener>
 
 	<!-- spring mvc servlert的配置 -->
