@@ -193,10 +193,29 @@
       </foreach> 
     </delete>
 
-	<select id="getHotProduct" resultMap="BaseResultMap">
-     SELECT
-	 *
-	 FROM
-	 product p where p.commend=1 and p.open=1 and p.cid=#{cid}
+    <resultMap type="com.gt.model.Product" id="HotProductMap" extends="BaseResultMap">
+     <association property="category" javaType="com.gt.model.Category">
+	     <id property="id" column="cid"/>
+	     <result property="type" column="type"/>
+     </association>
+  </resultMap>
+
+	<select id="getHotProduct" resultMap="HotProductMap">
+		SELECT
+		category.id as cid,
+		category.type as type,
+		product.id,
+		product.`name`,
+		product.price,
+		product.pic,
+		product.remark,
+		product.xremark,
+		product.date,
+		product.commend,
+		product.`open`
+		FROM
+		category,product 
+		where product.cid=category.id and product.cid=#{cid} and product.commend=1 and product.`open`=1
+	    order by product.date desc limit 0,4
 	</select>
 </mapper>

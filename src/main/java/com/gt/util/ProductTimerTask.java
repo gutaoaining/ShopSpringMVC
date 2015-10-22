@@ -48,6 +48,7 @@ public class ProductTimerTask extends TimerTask{
 	public void run() {
 	    List<List<Product>> alllist = new ArrayList<List<Product>>();
 	    for (Category category : categoryService.getTypeByHot(1)) {
+	    	System.out.println("热点产品有："+category.getId());
 			alllist.add(productService.getProductByCid(category.getId()));
 		}
 	    getServletContext().setAttribute("alllist", alllist);
