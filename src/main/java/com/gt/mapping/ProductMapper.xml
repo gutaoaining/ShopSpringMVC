@@ -186,10 +186,17 @@
 	  collection里表示类型，这里是array，还可以是list
 	  ids不用管，相当于一个变量
   -->
-  <delete id="delProduct" parameterType="list">
-	delete from product where id in 
-	<foreach item="ids" collection="array" open="(" separator="," close=")"> 
-	#{ids}
-  </foreach> 
-</delete>
+    <delete id="delProduct" parameterType="list">
+      delete from product where id in 
+	  <foreach item="ids" collection="array" open="(" separator="," close=")"> 
+	  #{ids}
+      </foreach> 
+    </delete>
+
+	<select id="getHotProduct" resultMap="BaseResultMap">
+     SELECT
+	 *
+	 FROM
+	 product p where p.commend=1 and p.open=1 and p.cid=#{cid}
+	</select>
 </mapper>

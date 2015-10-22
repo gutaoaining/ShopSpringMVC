@@ -44,5 +44,9 @@ public class CategoryServiceImpl implements CategoryServiceI {
 	public List<Category> findProductType() {
 		return categoryMapper.findProductType();
 	}
+	@Override
+	public List<Category> getTypeByHot(int ishot) {
+		return categoryMapper.getCategoryIsHot(ishot);
+	}
 
 }

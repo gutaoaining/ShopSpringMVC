@@ -16,4 +16,7 @@ public interface ProductServiceI {
 	public void saveProduct(Product product);
 
 	public void updateProduct(Product product);
+	
+	public List<Product> getProductByCid(int cid);
+	
 }

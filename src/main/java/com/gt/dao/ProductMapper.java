@@ -25,4 +25,6 @@ public interface ProductMapper {
     int countProductAll(String name);
 
 	int delProduct(Integer[] idkey);
+	
+	List<Product> getHotProduct(int cid);
 }

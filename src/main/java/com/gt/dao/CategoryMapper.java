@@ -26,5 +26,5 @@ public interface CategoryMapper {
 
 	List<Category> findProductType();
 
-
+    List<Category> getCategoryIsHot(int ishot);
 }

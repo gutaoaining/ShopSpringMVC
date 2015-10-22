@@ -126,4 +126,10 @@
 	FROM
 	category
   </select>
+  <select id="getCategoryIsHot" resultMap="BaseResultMap">
+     SELECT
+	 *
+	 FROM
+	 category c where c.hot=#{cid}
+  </select>
 </mapper>

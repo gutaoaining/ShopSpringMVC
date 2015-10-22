@@ -18,4 +18,6 @@ public interface CategoryServiceI {
 	public void updateCategory(Category category);
 
 	public List<Category> findProductType();
+	
+	public List<Category> getTypeByHot(int ishot); 
 }

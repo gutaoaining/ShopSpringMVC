@@ -40,4 +40,9 @@ public class ProductServiceImpl implements ProductServiceI {
 		productMapper.updateByPrimaryKey(product);
 	}
 
+	@Override
+	public List<Product> getProductByCid(int cid) {
+		return productMapper.getHotProduct(cid);
+	}
+
 }
